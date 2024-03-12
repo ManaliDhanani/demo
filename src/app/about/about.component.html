@@ -6,7 +6,7 @@
     <input type="text" class="form-control shadow-none"  placeholder="Username" formControlName="username" /> <br>
     <div class="err-msg mb-3">
         <small *ngIf="reactiveForm.get('username').errors?.['required'] && reactiveForm.get('username').touched">*Username is required</small>
-        <small *ngIf="reactiveForm.get('username').errors?.['checkUserName']">*Username is already exist</small>
+        <small *ngIf="reactiveForm.get('username').errors?.['checkUserName']">*Username already exists</small>
     </div> 
 
     <label>Email:</label> <br>
