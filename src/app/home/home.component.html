@@ -3,7 +3,7 @@
 
     <input type="text" name="username" class="form-control shadow-none"  placeholder="Username" #uname="ngModel" ngModel required /> <br>
     <div class="err-msg mb-3">
-        <small *ngIf="uname.invalid && uname.touched">*Username is required</small>
+        <small *ngIf="uname.invalid && uname.touched">*Username is required field</small>
     </div>
     <input type="email" name="email" class="form-control shadow-none" placeholder="Email" #email="ngModel" ngModel required email /> <br/> 
     <div class="err-msg mb-3">
