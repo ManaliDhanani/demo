@@ -1,5 +1,7 @@
-import { Component, ViewChild, OnInit, ElementRef } from '@angular/core';
+import { Component, ViewChild, OnInit, ElementRef, Output, EventEmitter } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { FirebaseService } from '../services/firebase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -7,6 +9,27 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
+
+  userEmail: string;
+  isLoggedIn: boolean = false;
+
+  constructor(public firebaseService: FirebaseService, private router: Router) { }
+
+  ngOnInit(){
+    this.firebaseService.currentUser.subscribe(user => {
+      if(user){
+        this.userEmail = user.email;
+        this.isLoggedIn = true;
+      }else {
+        this.isLoggedIn = false;
+        this.router.navigate(['/login']);
+      }
+    })
+  }
+
+  logout(){
+    this.firebaseService.logout();
+  }
 
   username = '';
   emailAddress = '';
@@ -18,10 +41,6 @@ export class HomeComponent {
   selectedCheckValues = [];
   formSubmitted = false;
 
-  // @ViewChild('name') tempPara1: ElementRef;
-  // @ViewChild('mail') tempPara2: ElementRef;
-  // @ViewChild('gen') tempPara3: ElementRef;
-  // @ViewChild('check') tempPara4: ElementRef;
 
   @ViewChild('registrationForm') form: NgForm;
 
@@ -51,6 +70,6 @@ export class HomeComponent {
     this.form.control.setValue({ ...this.selectedValues });
   }
 
-  ngOnInit(){ }
+  
 
 }

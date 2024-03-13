@@ -1,9 +1,9 @@
-/* .main {
-    margin-top: 3rem;
-    padding-top: 3rem;
-    height: 100vh;
+.form {
+    padding-top: 6rem;
+    padding-left: 3rem;
+    /* height: 100vh; */
 }
-.red {
+/* .red {
     color: red;
 }
 .blue {

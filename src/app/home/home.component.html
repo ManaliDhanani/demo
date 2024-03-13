@@ -1,4 +1,10 @@
 <h1 class="text-center">Template Driven Form</h1>
+<div *ngIf="userEmail">
+    <button (click)="logout()" class="btn btn-primary">Logout</button>
+    <p>Welcome, {{ userEmail }}</p>
+</div>
+
+
 <form (ngSubmit)="onClickSubmit()" #registrationForm="ngForm" class="mt-4 mx-auto"> 
 
     <input type="text" name="username" class="form-control shadow-none"  placeholder="Username" #uname="ngModel" ngModel required /> <br>

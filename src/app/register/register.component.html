@@ -1,0 +1,9 @@
+<div class="main">
+    <div>
+        <h1>Sign up</h1>
+        <input type="email" placeholder="Enter Email" class="form-control my-3" #emailSignup />
+        <input type="password" placeholder="Enter Password" class="form-control mb-3" #passwordSignup />
+        <button class="btn btn-primary mb-5" (click)="onSignup(emailSignup.value,passwordSignup.value)">Sign up</button>
+        <p>Already have an account? <a class="text-decoration-none" routerLink="/login">Login</a></p>
+    </div>
+</div>
