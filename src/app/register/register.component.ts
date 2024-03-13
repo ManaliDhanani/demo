@@ -8,13 +8,22 @@ import { FirebaseService } from '../services/firebase.service';
 })
 export class RegisterComponent implements OnInit {
 
+  errorMessage: string = '';
+
   constructor(public firebaseService: FirebaseService){}
 
   ngOnInit(){
   }
 
-  async onSignup(email: string, password: string){
-    await this.firebaseService.signup(email, password);
+  async onSignup(signupForm: any) {
+    if (signupForm.valid) {
+      const email = signupForm.value.email;
+      const password = signupForm.value.password;
+      await this.firebaseService.signup(email, password)
+      .catch(error => {
+        this.errorMessage = error.message; // Display Firebase error message
+      });
+    }
   }
 
 }
